@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# rtccontrol on
+# rtccontrol cancel
+
+RTCFILE="/sys/class/rtc/rtc0/wakealarm"
+
+function rtcoff()
+{
+	echo "Clearing RTC alarms!"
+	sudo sh -c "echo 0 > $RTCFILE"
+}
+
+function rtcon()
+{
+	rtcoff
+
+	echo "Turning RTC on!"
+	TARGET=$(date -d 'tomorrow 9:00 UTC' +%s)
+	sudo sh -c "echo $TARGET > $RTCFILE"
+}
+
+
+[ $# -eq 0 ] && echo -e "Usage: \n\trtccontrol on -- enables rtc wake up\n\trtccontrol cancel -- disables rtc wake up"
+
+case "$1" in
+	"on")
+		rtcon
+		;;
+	"cancel")
+		rtcoff
+		;;
+	*)
+		;;
+esac
+
+echo "----"
+sudo cat $RTCFILE
+echo "----"

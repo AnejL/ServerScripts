@@ -1,0 +1,6 @@
+#!/bin/sh
+
+MINEDIR="$HOME/$(ls $HOME | grep minecraft | sort -r | fzf)"
+
+cd $MINEDIR
+java -jar server.jar --nogui

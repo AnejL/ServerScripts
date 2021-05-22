@@ -1,0 +1,7 @@
+#!/bin/sh
+# ./run.sh  or ./run.sh -d
+docker run --rm -it $1 -p 8000:80 -p 8001:443 \
+	-v /home/anej/dotnet/certs:/https/ \
+	-v /home/anej/dotnet/volumes/birthdayapi:/birthdaydata/ \
+	--name bdapi birthdayapi
+

@@ -1,0 +1,10 @@
+#!/bin/sh
+sudo ufw disable
+
+# sudo ufw allow comment "ssh"
+# sudo ufw allow 25565 comment "minecraft server"
+
+# sudo ufw default deny incoming
+# sudo ufw default allow outgoing
+
+sudo ufw enable

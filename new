@@ -1,0 +1,8 @@
+#!/bin/sh
+NAME="$1"
+
+touch $NAME
+chmod +x $NAME
+
+echo -e '#!/bin/sh\n' > $NAME
+exit 0

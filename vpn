@@ -1,0 +1,6 @@
+#!/bin/sh
+
+[ "$1" = "start" ] || [ $# -eq 0 ] && sudo service openvpn start
+[ "$1" = "stop" ] && sudo service openvpn stop
+
+exit 0

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# docker stop web
+
+DAEMON=""
+[ "$1" = "d" ] && DAEMON="-d"
+
+docker run -it $DAEMON --rm -p 8080:80 --name web \
+	-v ~/nginx/nginx-html:/usr/share/nginx/html \
+	-v ~/nginx/nginx-files:/files \
+	-v ~/nginx/server:/etc/nginx/nginx.conf.d/server \
+	nginx
